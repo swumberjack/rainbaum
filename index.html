@@ -78,6 +78,34 @@ a.youtube-link:hover {
 </style>
 
 </head>
+
+    <!-- YouTube IFrame Player API -->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+let players = [];
+
+// Wird automatisch aufgerufen, wenn die API geladen ist
+function onYouTubeIframeAPIReady() {
+    const iframes = document.querySelectorAll('.video-box iframe');
+    iframes.forEach((iframe) => {
+        const player = new YT.Player(iframe, {
+            events: {
+                'onReady': function(event) {
+                    event.target.mute(); // Browser Autoplay erlaubt nur stumm
+                    event.target.playVideo();
+                    setTimeout(() => {
+                        event.target.pauseVideo();
+                    }, 1); // 0.001 Sekunde abspielen
+                }
+            }
+        });
+        players.push(player);
+    });
+}
+</script>
+
+
+    
 <body>
     <div class="container">
 
