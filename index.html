@@ -35,20 +35,29 @@
         }
 
 
-        .video-box {
-            margin-top: 20px;
-            transition: transform 0.3s;
-        }
 
-        .video-box:hover {
+        .video-box {
+    position: relative;
+    width: 50%;              /* Video halb so breit */
+    margin: 0 auto;          /* zentriert */
+    padding-bottom: 28.125%; /* 16:9 Verhältnis → 9/16 = 0.5625 → halbe Höhe = 28.125% */
+    height: 0;               /* wird durch padding ersetzt */
+    overflow: hidden;        /* falls YouTube leicht überragt */
+}
+
+                .video-box:hover {
             transform: scale(1.02);
         }
 
-        .video-box iframe {
-            width: 50%;
-            height: 225px; /* vorher 450px → jetzt halb so hoch */
-            border: none;
-        }
+.video-box iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
 
         
 
