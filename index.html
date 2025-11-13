@@ -35,29 +35,24 @@
         }
 
 
-
-        .video-box {
-    position: relative;
-    width: 50%;              /* Video halb so breit */
-    margin: 0 auto;          /* zentriert */
-    padding-bottom: 28.125%; /* 16:9 Verhältnis → 9/16 = 0.5625 → halbe Höhe = 28.125% */
-    height: 0;               /* wird durch padding ersetzt */
-    overflow: hidden;        /* falls YouTube leicht überragt */
-}
-
-                .video-box:hover {
-            transform: scale(1.02);
+            .video-box {
+                position: relative;
+                width: 50%;              /* halb so breit wie der Container */
+                margin: 0 auto;          /* zentriert */
+                aspect-ratio: 16 / 9;    /* sorgt für korrektes Seitenverhältnis */
+                overflow: hidden;        /* verhindert, dass YouTube überragt */
         }
 
-.video-box iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-}
+            .video-box iframe {
+                width: 100%;
+                height: 100%;
+                border: none;
+            }
 
+
+        .video-box:hover {
+            transform: scale(1.02);
+        }
 
         
 
