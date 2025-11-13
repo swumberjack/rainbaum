@@ -5,35 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rubik's Cube Anleitung</title>
     <style>
-
-    <!-- YouTube IFrame Player API -->
-<script src="https://www.youtube.com/iframe_api"></script>
-<script>
-let players = [];
-
-// Wird automatisch aufgerufen, wenn die API geladen ist
-function onYouTubeIframeAPIReady() {
-    const iframes = document.querySelectorAll('.video-box iframe');
-    iframes.forEach((iframe) => {
-        const player = new YT.Player(iframe, {
-            events: {
-                'onReady': function(event) {
-                    event.target.mute(); // Browser Autoplay erlaubt nur stumm
-                    event.target.playVideo();
-                    setTimeout(() => {
-                        event.target.pauseVideo();
-                    }, 100); // 0.1 Sekunde abspielen
-                }
-            }
-        });
-        players.push(player);
-    });
-}
-</script>
-
-
-
-        
     body {
         background: black;
         color: white;
@@ -45,7 +16,7 @@ function onYouTubeIframeAPIReady() {
     .container {
         max-width: 800px;
         margin: 0 auto;
-        text-align: center;   /* <-- alles zentriert */
+        text-align: center;
     }
 
     .section {
@@ -64,13 +35,12 @@ function onYouTubeIframeAPIReady() {
         border-left: 2px solid #ccc;
     }
 
-    /* --- NEUE VARIANTE 1 --- */
     .video-box {
         position: relative;
-        width: 50%;            /* halb so breit wie der Container */
-        max-width: 360px;   /* Video wird nie größer als 560px */
-        margin: 0 auto;        /* zentriert */
-        aspect-ratio: 16 / 9;  /* behält Seitenverhältnis bei */
+        width: 50%;
+        max-width: 360px;
+        margin: 0 auto;
+        aspect-ratio: 16 / 9;
         overflow: hidden;
     }
 
@@ -81,7 +51,7 @@ function onYouTubeIframeAPIReady() {
         width: 100%;
         height: 100%;
         border: none;
-        object-fit: contain;   /* sorgt dafür, dass nichts abgeschnitten wird */
+        object-fit: contain;
     }
 
     .video-box:hover {
@@ -89,22 +59,53 @@ function onYouTubeIframeAPIReady() {
     }
 
     a.youtube-link {
-    color: #1E90FF;       /* hellblau */
-    text-decoration: none; /* kein Unterstrich */
-    font-weight: bold;
-}
+        color: #1E90FF;
+        text-decoration: none;
+        font-weight: bold;
+    }
 
-a.youtube-link:hover {
-    text-decoration: underline; /* Unterstrich beim Hover */
-}
-
+    a.youtube-link:hover {
+        text-decoration: underline;
+    }
 
     @media (max-width: 768px) {
         .video-box {
-            width: 90%;  /* auf kleinen Screens fast volle Breite */
+            width: 90%;
         }
     }
-</style>
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HIER KOMMT DEIN GANZER BODY-INHALT, ALLE SECTIONS UND VIDEOS -->
+    </div>
+
+    <!-- YouTube IFrame Player API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+    let players = [];
+
+    function onYouTubeIframeAPIReady() {
+        const iframes = document.querySelectorAll('.video-box iframe');
+        iframes.forEach((iframe) => {
+            const player = new YT.Player(iframe, {
+                events: {
+                    'onReady': function(event) {
+                        event.target.mute();
+                        event.target.playVideo();
+                        setTimeout(() => {
+                            event.target.pauseVideo();
+                        }, 100); // 0.1 Sekunde abspielen
+                    }
+                }
+            });
+            players.push(player);
+        });
+    }
+    </script>
+</body>
+</html>
+
 
 </head>
 
