@@ -77,36 +77,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- HIER KOMMT DEIN GANZER BODY-INHALT, ALLE SECTIONS UND VIDEOS -->
-    </div>
-
-    <!-- YouTube IFrame Player API -->
-    <script src="https://www.youtube.com/iframe_api"></script>
-    <script>
-    let players = [];
-
-    function onYouTubeIframeAPIReady() {
-        const iframes = document.querySelectorAll('.video-box iframe');
-        iframes.forEach((iframe) => {
-            const player = new YT.Player(iframe, {
-                events: {
-                    'onReady': function(event) {
-                        event.target.mute();
-                        event.target.playVideo();
-                        setTimeout(() => {
-                            event.target.pauseVideo();
-                        }, 100); // 0.1 Sekunde abspielen
-                    }
-                }
-            });
-            players.push(player);
-        });
-    }
-    </script>
-</body>
-</html>
-
-    <div class="container">
 
         <div class="section">
     <h2>Links zu anderen Videos</h2>
@@ -365,5 +335,29 @@
 
         </div>
     </div>
+        <!-- YouTube IFrame Player API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+    let players = [];
+
+    function onYouTubeIframeAPIReady() {
+        const iframes = document.querySelectorAll('.video-box iframe');
+        iframes.forEach((iframe) => {
+            const player = new YT.Player(iframe, {
+                events: {
+                    'onReady': function(event) {
+                        event.target.mute();
+                        event.target.playVideo();
+                        setTimeout(() => {
+                            event.target.pauseVideo();
+                        }, 100); // 0.1 Sekunde abspielen
+                    }
+                }
+            });
+            players.push(player);
+        });
+    }
+    </script>
 </body>
 </html>
+
